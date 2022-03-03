@@ -36,8 +36,8 @@ export class CustomRangePanelComponent<D> {
   // called when user selects a range preset:
   selectRange(rangeName: CustomPreset): void {
     const [start, end] = this.calculateDateRange(rangeName);
-    this.picker.select(end);
     this.picker.select(start);
+    this.picker.select(end);
     this.picker.close();
   }
 

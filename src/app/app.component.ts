@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDateRangePicker } from '@angular/material/datepicker/public-api';
 import { ExampleHeaderComponent } from './example-header/example-header.component';
 
 @Component({
@@ -7,7 +8,13 @@ import { ExampleHeaderComponent } from './example-header/example-header.componen
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  @ViewChild('picker') rangePicker: MatDateRangePicker<Date>;
+
+  ngOnInit(): void {
+    this.rangePicker._stateChanges.subscribe((state) => console.log(state));
+  }
+
   // make ExampleHeaderComponent type available in our template:
   readonly ExampleHeaderComponent = ExampleHeaderComponent;
 
